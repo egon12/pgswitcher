@@ -1,0 +1,8 @@
+{
+	"Listen": ":5440",
+	"HTTPListen": ":8080",
+	"Old": ["postgres://system:123456@127.0.0.1:5441/trial01?sslmode=disable"],
+	"New": ["postgres://system:123456@127.0.0.1:5442/trial01?sslmode=disable"],
+	"Client": ["postgres://system:123456@127.0.0.1:5441/trial01?sslmode=disable"],
+	"ExecuteBeforeUseNewSQL": "set_seq.sql"
+}

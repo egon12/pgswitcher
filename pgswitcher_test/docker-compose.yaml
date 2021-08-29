@@ -1,0 +1,44 @@
+version: "3.3"  # optional since v1.27.0
+
+services:
+  pbouncer:
+    image: pgbouncer/pgbouncer:1.15.0
+    ports:
+      - "5445:5432"
+    environment:
+      DATABASES: primary= host=postgres-main dbname=trial01 password=123456,replica= host=postgres-standby dbname=trial01 password=123456
+      PGBOUNCER_LISTEN_PORT: 5432
+      PGBOUNCER_AUTH_TYPE: md5
+      PGBOUNCER_AUTH_FILE: /auth/userlist.txt
+      PGBOUNCER_ADMIN_USERS: system01
+
+    volumes:
+      - ./pgbouncer_auth:/auth
+
+  postgres-main:
+    image: postgres:13.1-alpine
+    environment:
+      #POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: system
+      POSTGRES_DB: trial01
+    command: [ "postgres", "-c", "wal_level=logical" ]
+    ports:
+      - 5441:5432
+    volumes:
+      - ./initdb-main:/docker-entrypoint-initdb.d
+
+  postgres-standby:
+    image: postgres:13.1-alpine
+    environment:
+      #POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: system
+      POSTGRES_DB: trial01
+    ports:
+      - 5442:5432
+    volumes:
+      - ./initdb-standby:/docker-entrypoint-initdb.d
+    depends_on:
+      - postgres-main
+
