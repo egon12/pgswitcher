@@ -1,0 +1,7 @@
+{
+	"Listen": ":5440",
+	"HTTPListen": ":8080",
+	"Old": ["postgres://u:p@127.0.0.1:5441/db?sslmode=disable"],
+	"New": ["postgres://u:p@127.0.0.1:5441/db?sslmode=disable"],
+	"Client": ["postgres://u:p@127.0.0.1:5441/db?sslmode=disable"]
+}
