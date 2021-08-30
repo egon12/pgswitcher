@@ -1,4 +1,4 @@
-# Pgswitcher Prof of Concept
+# Pgswitcher POC
 
 ## How to run it
 
@@ -65,7 +65,7 @@ The are numbers of services that need to be run this POC
 
 The main actor are pgswitcher.
 
-In here pgswitcher will read config.json that have config like
+In here pgswitcher will read `config.json` that have config like
 - old postgres connection
 - new postgres connection
 - client connection (to set how client will connect to this pgswitcher)
