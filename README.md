@@ -5,7 +5,7 @@ Postgresql Proxy for switch server
 ## Why do we build this?
 
 When we migrate our database from your own 
-Postgres server into Cloud Postgres Server and
+Postgres server into Cloud Postgres Server or
 the other way around, we ussually have a long 
 downtime. The downtime is caused by manually
 do these task:
@@ -24,9 +24,9 @@ the postgresql database.
 ## Getting Started
 
 You can see the example of how it works by see 
-(pgswitcher_test)[https://github.com/egon12/pgswitcher/tree/main/pgswitcher_test]
+[pgswitcher_test](https://github.com/egon12/pgswitcher/tree/main/pgswitcher_test)
 
-## When to used
+# Warning
 
 This project is still in early development stage
 So it still unstable aspect like the proxy doesn't support
